@@ -1,0 +1,14 @@
+{
+  "aps": {
+    "timestamp": 1736938800,
+    "event": "update",
+    "content-state": {
+      "phase": "disrupted",
+      "title": "Flight 482 is delayed",
+      "detail": "A crew issue adds 55 minutes.",
+      "gate": "B12",
+      "departure": "10:55"
+    },
+    "stale-date": 1736942400
+  }
+}
