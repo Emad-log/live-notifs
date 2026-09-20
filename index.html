@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Live Notification Agent</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="shell">
+    <header class="topbar">
+      <div class="brand"><span class="pulse"></span><span>Live Agent</span></div>
+      <span class="status">ACTIVE THREAD</span>
+    </header>
+
+    <section class="hero">
+      <p class="eyebrow">FLIGHT 482 · TODAY</p>
+      <h1>Push notifications that keep working.</h1>
+      <p class="intro">A bounded prototype for notifications that carry context forward, react to change, and offer a decision in place.</p>
+    </section>
+
+    <section class="device-stage" aria-label="Interactive notification preview">
+      <div class="island"><span class="island-dot"></span><span id="islandText">Flight 482 is on time</span></div>
+      <div class="phone">
+        <div class="phone-header"><span>9:41</span><span>•••</span></div>
+        <div class="lock-content"><p class="date">SATURDAY, SEPTEMBER 19</p><p class="clock">9:41</p></div>
+        <article class="notification" id="notification">
+          <div class="notification-head"><div class="app-icon">✦</div><div><strong>Live Agent</strong><span id="timeLabel">Now</span></div><span class="chevron">›</span></div>
+          <div class="notification-body"><h2 id="notificationTitle">Flight 482 is on time</h2><p id="notificationCopy">Your trip to Toronto is ready. Boarding begins at 9:55 at gate B12.</p><div class="route"><span>JFK</span><span class="line"></span><span>YYZ</span></div><div class="meta"><span id="metaLabel">Gate B12</span><span id="metaValue">On schedule</span></div></div>
+          <div class="actions" id="actions"><button data-action="delay">Simulate disruption</button></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="controls"><div class="section-label">AGENT STATE</div><div class="timeline" id="timeline"></div><p class="hint">Select a state to advance the same notification thread. The agent preserves context instead of starting over.</p></section>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
