@@ -1,32 +1,17 @@
-const states = {
-  scheduled: { label: 'On time', island: 'Flight 482 is on time', title: 'Flight 482 is on time', copy: 'Your trip to Toronto is ready. Boarding begins at 9:55 at gate B12.', meta: 'Gate B12', value: 'On schedule', actions: [{ label: 'Simulate disruption', action: 'disrupted' }] },
-  disrupted: { label: 'Disrupted', island: 'Flight 482 needs a decision', title: 'Flight 482 is delayed', copy: 'A crew issue adds 55 minutes. You can keep this flight or switch to the 11:20 departure.', meta: 'New departure', value: '10:55', actions: [{ label: 'Take 11:20', action: 'rerouted' }, { label: 'Keep 10:55', action: 'kept' }] },
-  rerouted: { label: 'Rerouted', island: 'Agent found a better option', title: 'You are moved to 11:20', copy: 'Your seat is confirmed on flight 618. The agent will keep watching this trip for changes.', meta: 'Flight 618 · Gate C4', value: 'Confirmed', actions: [{ label: 'Resolve thread', action: 'resolved' }] },
-  resolved: { label: 'Resolved', island: 'Trip updated successfully', title: 'You are all set', copy: 'Flight 618 is confirmed for 11:20 from gate C4. No further action is needed.', meta: 'Agent thread', value: 'Resolved', actions: [] },
-  kept: { label: 'Monitoring', island: 'Agent is monitoring 10:55', title: 'Keeping flight 482', copy: 'Your original flight stays selected. I will keep monitoring it and update this thread if anything changes.', meta: 'Flight 482', value: 'Monitoring', actions: [{ label: 'Resolve thread', action: 'resolved' }] }
+const states={
+ normal:{label:'Normal',island:'UA 837 · On time',kicker:'FLIGHT STATUS',title:'UA 837 is on time',copy:'Boarding begins at 8:55 PM at gate B12.',meta:'Gate B12',value:'On schedule',actions:[{label:'Simulate disruption',action:'disrupted'}]},
+ disrupted:{label:'Disruption',island:'UA 837 · 45m delay',kicker:'CONNECTION AT RISK',title:'Your flight is delayed',copy:'A 45-minute delay puts your Toronto connection at risk.',meta:'Departure',value:'+45 min',actions:[{label:'Agent is evaluating',action:'agent'}]},
+ agent:{label:'Agent found option',island:'Option found · DEN',kicker:'ONE-TAP DECISION',title:'Agent found UA 1492 via DEN',copy:'This reroute saves your connection. Keep your trip moving with one tap.',meta:'New connection',value:'UA 1492 · DEN',actions:[{label:'Reroute via Denver',action:'processing'},{label:'Keep current',action:'kept'}]},
+ processing:{label:'Rebooking',island:'Rebooking via Denver…',kicker:'WORKING ON IT',title:'Rebooking your trip',copy:'Confirming UA 1492 and carrying your connection forward.',meta:'Agent action',value:'Processing…',actions:[]},
+ resolved:{label:'Confirmed',island:'Rebooked · UA 1492',kicker:'TRIP UPDATED',title:'You are all set',copy:'Your connection is protected. Boarding begins at 10:20 PM at gate C18.',meta:'UA 1492 · Gate C18',value:'Confirmed',actions:[]},
+ kept:{label:'Monitoring',island:'Monitoring UA 837',kicker:'STAYING WITH CURRENT',title:'Keeping UA 837',copy:'The agent will keep watching your trip and update this thread if anything changes.',meta:'Flight UA 837',value:'Monitoring',actions:[{label:'Reroute instead',action:'agent'}]}
 };
-let current = 'scheduled';
-const timeline = document.querySelector('#timeline');
-const render = () => {
-  const state = states[current];
-  document.querySelector('#islandText').textContent = state.island;
-  document.querySelector('#notificationTitle').textContent = state.title;
-  document.querySelector('#notificationCopy').textContent = state.copy;
-  document.querySelector('#metaLabel').textContent = state.meta;
-  document.querySelector('#metaValue').textContent = state.value;
-  document.querySelector('#timeLabel').textContent = current === 'scheduled' ? 'Now' : 'Updated now';
-  document.querySelector('#actions').innerHTML = state.actions.map(item => `<button data-action="${item.action}">${item.label}</button>`).join('');
-  timeline.querySelectorAll('button').forEach(button => button.classList.toggle('active', button.dataset.state === current));
-};
-['scheduled', 'disrupted', 'rerouted', 'resolved'].forEach(key => {
-  const button = document.createElement('button');
-  button.textContent = states[key].label;
-  button.dataset.state = key;
-  button.onclick = () => { current = key; render(); };
-  timeline.append(button);
-});
-document.addEventListener('click', event => {
-  const action = event.target.dataset.action;
-  if (action && states[action]) { current = action; render(); }
-});
-render();
+let current='normal', run=0;
+const $=id=>document.getElementById(id), timeline=$('timeline');
+function render(){const s=states[current];$('islandText').textContent=s.island;$('kicker').textContent=s.kicker;$('title').textContent=s.title;$('copy').textContent=s.copy;$('metaLabel').textContent=s.meta;$('metaValue').textContent=s.value;$('timeLabel').textContent=current==='normal'?'Now':'Updated now';$('actions').innerHTML=s.actions.map(a=>`<button data-action="${a.action}">${a.label}</button>`).join('');$('notification').classList.remove('flash');void $('notification').offsetWidth;$('notification').classList.add('flash');timeline.querySelectorAll('button').forEach(b=>b.classList.toggle('active',b.dataset.state===current));}
+function stop(){run++;$('autoplay').classList.remove('running');$('autoplay').textContent='▶ Auto-play for screen record'}
+function setState(next){current=next;render()}
+['normal','disrupted','agent','resolved'].forEach(key=>{const b=document.createElement('button');b.textContent=states[key].label;b.dataset.state=key;b.onclick=()=>{stop();setState(key)};timeline.append(b)});
+document.addEventListener('click',e=>{const action=e.target.dataset.action;if(action==='processing'){setState('processing');const token=run;setTimeout(()=>{if(token===run)setState('resolved')},2200)}else if(action)setState(action)});
+function autoplay(){stop();const token=run;current='normal';render();$('autoplay').classList.add('running');$('autoplay').textContent='■ Playing 15s sequence';[['disrupted',3800],['agent',7600],['processing',12000],['resolved',14500]].forEach(([state,at])=>setTimeout(()=>{if(token===run)setState(state)},at));setTimeout(()=>{if(token===run){stop();$('hint').textContent='Sequence complete. Ready to record again.'}},15500)}
+$('autoplay').onclick=autoplay;render();
