@@ -1,7 +1,24 @@
 # ActivityKit implementation
 
-Add the files in `ios/LiveNotification` to an app target and a Widget Extension target. Set the Widget Extension deployment target to iOS 16.1 or later and enable Live Activities in the app target capabilities.
+A complete demo app + Widget Extension that plays the same state sequence as the browser demo on a real iOS lock screen, via a Live Activity.
 
-Call `ActivityPushHandler.start` from the app after the user starts tracking a flight. Keep the returned activity or find it through `Activity<FlightActivityAttributes>.activities` for local updates. For server updates, send the activity push token to your provider and use the payload shape in `push-payload.json`.
+## Project layout
 
-The widget renders the same state model as the browser demo: scheduled, disrupted, rerouted, monitoring, and resolved.
+- `project.yml` — XcodeGen spec. Run `xcodegen generate` in this directory to produce `LiveNotifsDemo.xcodeproj`.
+- `LiveNotifsDemo/` — the app. Launches the demo automatically 1.5s after start.
+- `FlightWidget/` — Widget Extension rendering the Live Activity on the lock screen and Dynamic Island.
+- `Shared/` — `FlightActivityAttributes`, the scripted state sequence, and the App Intents behind the lock screen buttons.
+
+## Recording the demo video
+
+From the repo root on a Mac with Xcode 26+:
+
+```
+./ios/scripts/record-demo.sh
+```
+
+The script generates the project, boots an iPhone 17 Pro simulator, installs and launches the app, locks the screen, and records the sequence to `demo.mp4` in the repo root.
+
+## State model
+
+Same model as the browser demo: scheduled, disrupted, rerouted, monitoring, resolved. For server-driven updates, send the activity push token to your provider and use the payload shape in `push-payload.json`.
