@@ -1,1 +1,87 @@
-*{box-sizing:border-box}:root{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text",system-ui,sans-serif;color:#fff}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#fff}.canvas{height:100svh;display:grid;place-items:start center;padding-top:clamp(76px,15vh,156px);background:#fff}.card{position:relative;width:min(392px,calc(100vw - 32px));height:338px;padding:14px 16px;border:1px solid rgba(255,255,255,.16);border-radius:26px;background:rgba(28,28,30,.90);box-shadow:0 32px 64px rgba(0,0,0,.16),0 12px 24px rgba(0,0,0,.11),0 2px 7px rgba(0,0,0,.14),inset 0 1px rgba(255,255,255,.09);overflow:hidden;isolation:isolate;will-change:transform,opacity,height;backface-visibility:hidden}.card:before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(120% 45% at 50% -5%,rgba(255,255,255,.20),rgba(255,255,255,.04) 38%,transparent 70%),linear-gradient(125deg,rgba(255,255,255,.08),transparent 34%,rgba(255,255,255,.025) 70%,transparent);mix-blend-mode:screen}.topbar{height:20px;display:flex;align-items:center;gap:8px;position:relative;z-index:2;margin-bottom:12px}.airline-mark{width:20px;height:20px;flex:0 0 20px;border-radius:5px;border:.5px solid rgba(255,255,255,.22);display:grid;place-items:center;background:#1675d1;font-size:10px}.brand{font-size:13px;font-weight:500;letter-spacing:.01em;color:rgba(255,255,255,.72)}.now{margin-left:auto;font-size:12px;color:rgba(255,255,255,.42)}.stage{position:relative;height:268px}.state{position:absolute;inset:0;padding:0;will-change:transform,opacity,filter;backface-visibility:hidden}.state[hidden]{display:none}.eyebrow{font-size:10px;line-height:12px;letter-spacing:.12em;font-weight:600;color:rgba(255,255,255,.48)}.flight h1{font-size:16px;line-height:20px;letter-spacing:-.02em;margin:8px 0 4px;font-weight:600}.flight h1 span,.flight p i,.confirmed i{font-style:normal;opacity:.45}.flight p{font-size:13px;line-height:18px;margin:0;color:rgba(255,255,255,.70);font-variant-numeric:tabular-nums}.route{display:flex;align-items:center;gap:10px;margin:23px 0 14px;font-size:11px;letter-spacing:.04em}.route i{height:1px;flex:1;background:rgba(255,255,255,.35);position:relative}.route i:after{content:"✈";position:absolute;left:50%;top:-7px;font-size:10px;transform:translateX(-50%) rotate(90deg);opacity:.7}.meta{display:flex;justify-content:space-between;color:rgba(255,255,255,.48);font-size:11px;line-height:16px;font-variant-numeric:tabular-nums}.meta strong{font-weight:500;color:#30d158}.amber{color:#ff9f0a}.amber-text{color:#ff9f0a!important}.agent-box{margin-top:12px;padding:12px;border-radius:16px;background:rgba(255,255,255,.07);border:.5px solid rgba(255,255,255,.12);box-shadow:inset 0 1px rgba(255,255,255,.04)}.agent-badge{font-size:11px;line-height:14px;font-weight:600;letter-spacing:.5px;color:#c5b8ff}.agent p{font-size:13px;line-height:18px;color:rgba(255,255,255,.85);margin:8px 0 12px}.pills{display:flex;gap:8px}.pills button{position:relative;flex:1;height:36px;padding:0 10px;border-radius:11px;border:.5px solid rgba(255,255,255,.16);color:#fff;font:600 13px/18px inherit;cursor:pointer;overflow:hidden;white-space:nowrap}.pills button:first-child{background:rgba(255,255,255,.22)}.pills button:last-child{background:rgba(255,255,255,.08);color:rgba(255,255,255,.70)}.tap-cursor{position:absolute;left:50%;top:50%;font-size:12px;color:#fff;transform:translate(-50%,-50%) scale(2);opacity:0;pointer-events:none}.tap-cursor.tap{animation:tap .42s ease-out}.securing{display:flex;align-items:center;gap:9px;padding-top:28px;color:#b7d0ff;font-size:13px}.spinner{width:16px;height:16px;border:2px solid rgba(120,170,255,.27);border-top-color:#9fc1ff;border-radius:50%;animation:spin .7s linear infinite}.confirmed{display:flex;align-items:center;gap:10px;padding-top:18px}.check{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;background:#30d158;color:#082b18;font-weight:800}.confirmed strong,.confirmed span{display:block}.confirmed strong{font-size:13px;line-height:18px;font-weight:600}.confirmed span{font-size:13px;line-height:18px;color:rgba(255,255,255,.70);margin-top:2px;font-variant-numeric:tabular-nums}@keyframes spin{to{transform:rotate(360deg)}}@keyframes tap{0%{opacity:0;transform:translate(-50%,-50%) scale(2)}35%{opacity:1;transform:translate(-50%,-50%) scale(1)}100%{opacity:0;transform:translate(-50%,-50%) scale(.3)}}@media(prefers-reduced-motion:reduce){.card,.state{animation:none!important}.spinner{animation:none}}
+*{box-sizing:border-box}
+:root{--font:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","Inter",system-ui,sans-serif}
+html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#000;font-family:var(--font);color:#fff}
+
+/* phone shell: fills viewport, crops wallpaper to device frame */
+.phone{position:relative;width:100vw;height:100vh;background:url("wallpaper.png") center/cover no-repeat;overflow:hidden;isolation:isolate}
+.island{position:absolute;top:11px;left:50%;transform:translateX(-50%);width:96px;height:27px;background:#000;border-radius:14px;z-index:40}
+
+/* status bar */
+.statusbar{position:absolute;top:16px;left:0;right:0;display:flex;justify-content:space-between;align-items:center;padding:0 30px 0 34px;z-index:30}
+.sig{width:17px;height:12px;fill:#fff}
+.wifi{width:16px;height:12px;fill:#fff}
+.batt{display:flex;align-items:center;gap:4px;font-size:11px;font-weight:500}
+.batt svg{width:25px;height:12px}
+.batt rect[width="15"]{fill:#fff}
+
+/* lock screen chrome */
+.lock{position:absolute;top:56px;left:50%;transform:translateX(-50%);width:20px;height:22px;fill:rgba(255,255,255,.92);filter:drop-shadow(0 1px 3px rgba(0,0,0,.35));z-index:10}
+.clock{position:absolute;top:84px;left:0;right:0;text-align:center;font-size:82px;line-height:1;font-weight:600;letter-spacing:-.02em;font-variant-numeric:tabular-nums;text-shadow:0 2px 24px rgba(0,0,0,.28);z-index:10}
+.date{position:absolute;top:170px;left:0;right:0;text-align:center;font-size:15px;font-weight:500;color:rgba(255,255,255,.92);text-shadow:0 1px 6px rgba(0,0,0,.3);z-index:10}
+
+/* notification canvas sits under the clock */
+.canvas{position:absolute;top:206px;left:0;right:0;display:grid;place-items:start center;padding-top:10px;z-index:20}
+
+/* fake stacked notification behind the card */
+.stack{position:absolute;top:14px;width:min(392px,calc(100vw - 20px));height:84px;border-radius:24px;background:rgba(50,50,54,.42);backdrop-filter:blur(34px);-webkit-backdrop-filter:blur(34px);border:1px solid rgba(255,255,255,.14);box-shadow:0 12px 28px rgba(0,0,0,.22)}
+
+/* the live activity card: iOS 26 liquid glass */
+.card{position:relative;width:min(392px,calc(100vw - 20px));height:338px;padding:14px 16px;border:1px solid rgba(255,255,255,.17);border-radius:26px;background:rgba(40,40,44,.55);backdrop-filter:blur(44px) saturate(160%);-webkit-backdrop-filter:blur(44px) saturate(160%);box-shadow:0 32px 64px rgba(0,0,0,.28),0 12px 24px rgba(0,0,0,.18),0 2px 7px rgba(0,0,0,.14),inset 0 1px rgba(255,255,255,.16);overflow:hidden;isolation:isolate;will-change:transform,opacity,height;backface-visibility:hidden}
+.card:before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(120% 45% at 50% -5%,rgba(255,255,255,.20),rgba(255,255,255,.04) 38%,transparent 70%),linear-gradient(125deg,rgba(255,255,255,.09),transparent 34%,rgba(255,255,255,.03) 70%,transparent);mix-blend-mode:screen}
+
+.topbar{height:22px;display:flex;align-items:center;gap:8px;position:relative;z-index:2;margin-bottom:10px}
+.app-icon{width:22px;height:22px;flex:0 0 22px;border-radius:5.5px;border:.5px solid rgba(255,255,255,.25);display:grid;place-items:center;background:linear-gradient(145deg,#2f7fd4,#1b5fb8);box-shadow:0 1px 3px rgba(0,0,0,.3)}
+.brand{font-size:12.5px;font-weight:600;letter-spacing:.06em;color:rgba(255,255,255,.78)}
+.now{margin-left:auto;font-size:11.5px;color:rgba(255,255,255,.45)}
+
+.stage{position:relative;height:270px}
+.state{position:absolute;inset:0;padding:0;will-change:transform,opacity,filter;backface-visibility:hidden}
+.state[hidden]{display:none}
+
+.eyebrow{font-size:10px;line-height:12px;letter-spacing:.12em;font-weight:600;color:rgba(255,255,255,.48)}
+.flight h1{font-size:17px;line-height:21px;letter-spacing:-.02em;margin:7px 0 3px;font-weight:600}
+.flight h1 span,.flight p i,.confirmed i{font-style:normal;opacity:.45}
+.flight p{font-size:13px;line-height:18px;margin:0;color:rgba(255,255,255,.72)}
+.route{display:flex;align-items:center;gap:10px;margin:14px 0 12px}
+.route b{font-size:21px;font-weight:600;letter-spacing:.02em}
+.route i{flex:1;height:1.5px;background:linear-gradient(90deg,rgba(255,255,255,.55),rgba(255,255,255,.14));border-radius:1px;position:relative}
+.route i:after{content:"✈";position:absolute;right:0;top:50%;transform:translate(50%,-50%) rotate(90deg);font-size:10px;opacity:.75}
+.meta{display:flex;justify-content:space-between;font-size:12.5px;padding-top:10px;border-top:.5px solid rgba(255,255,255,.12)}
+.meta span{color:rgba(255,255,255,.55)}
+.meta strong{font-weight:600}
+.amber,.amber-text{color:#ffb340}
+.eyebrow.amber{color:#ffb340}
+
+.agent-box{padding-top:2px}
+.agent-badge{display:inline-flex;align-items:center;gap:5px;font-size:10px;font-weight:600;letter-spacing:.12em;color:#b9a7ff;margin-bottom:8px}
+.agent-badge svg{width:11px;height:11px}
+.agent p{font-size:14.5px;line-height:20px;margin:0 0 14px;color:rgba(255,255,255,.92)}
+.pills{display:flex;gap:8px}
+.pills button{flex:1;height:36px;border:none;border-radius:11px;font-family:inherit;font-size:13.5px;font-weight:600;cursor:pointer;color:#fff;background:rgba(255,255,255,.10);border:.5px solid rgba(255,255,255,.14);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);position:relative}
+.pills button:first-child{background:rgba(63,120,255,.85);border-color:rgba(255,255,255,.18)}
+.pills button:active{transform:scale(.97)}
+
+.tap-cursor{position:absolute;top:50%;left:50%;width:26px;height:26px;margin:-13px 0 0 -13px;border-radius:50%;background:rgba(255,255,255,.28);backdrop-filter:blur(2px);opacity:0;pointer-events:none}
+.tap-cursor.tap{opacity:1;animation:tapPulse .42s ease-out}
+@keyframes tapPulse{0%{transform:scale(.4)}55%{transform:scale(1)}100%{transform:scale(1);opacity:.9}}
+
+.securing{display:flex;align-items:center;gap:12px;font-size:14.5px;color:rgba(255,255,255,.92)}
+.spinner{width:22px;height:22px;flex:0 0 22px;border-radius:50%;border:2.2px solid rgba(255,255,255,.18);border-top-color:#fff;animation:spin .8s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+.confirmed{display:flex;align-items:center;gap:14px}
+.check{width:30px;height:30px;flex:0 0 30px;border-radius:50%;display:grid;place-items:center;font-size:15px;background:rgba(52,199,89,.92);box-shadow:0 2px 10px rgba(52,199,89,.4)}
+.confirmed strong{display:block;font-size:15px;font-weight:600;margin-bottom:2px}
+.confirmed span{font-size:13px;color:rgba(255,255,255,.65)}
+
+/* bottom chrome: quick actions + home indicator */
+.quick{position:absolute;bottom:44px;left:0;right:0;display:flex;justify-content:center;gap:58px;z-index:10}
+.qbtn{width:46px;height:46px;border-radius:50%;border:.5px solid rgba(255,255,255,.2);background:rgba(50,50,54,.45);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);display:grid;place-items:center;cursor:pointer}
+.qbtn svg{width:20px;height:20px}
+.home-indicator{position:absolute;bottom:9px;left:50%;transform:translateX(-50%);width:134px;height:5px;border-radius:3px;background:rgba(255,255,255,.85)}
+
+@media (max-width:400px),(max-height:740px){
+  .clock{font-size:64px;top:76px}
+  .date{top:146px}
+  .canvas{top:174px}
+}
