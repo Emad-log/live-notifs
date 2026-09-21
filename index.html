@@ -1,1 +1,25 @@
-<!doctype html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#fff"><title>United Live Activity</title><link rel="stylesheet" href="styles.css?v=gsap1"><script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script></head><body><main class="canvas"><article class="card" id="card"><header><span class="logo">✈</span><span class="brand">UNITED</span><span class="dot">·</span><span class="now">now</span></header><div class="stage"><section class="flight base"><div class="eyebrow">FLIGHT STATUS</div><h1>UA 837 · SFO → NRT</h1><p>On time · Gate 82</p><div class="route"><span>SFO</span><i></i><span>NRT</span></div><div class="meta"><span>Departure 8:55 PM</span><b>On schedule</b></div></section><section class="flight delay"><div class="eyebrow amber">TRAVEL ALERT</div><h1>UA 837 · SFO → NRT</h1><p>Delayed 45m · Tight connection in NRT</p><div class="route"><span>SFO</span><i></i><span>NRT</span></div><div class="meta"><span>Gate 82</span><b class="amber-text">Connection at risk</b></div></section><section class="agent"><div class="agent-box"><div class="agent-badge">✦ POKE AGENT</div><p>Connection in NRT at risk. Found an open seat on UA 1492 via DEN to arrive on schedule.</p><div class="pills"><button>Rebook via DEN</button><button>Keep Current</button></div></div></section><section class="securing"><span class="spinner"></span><span>Securing seat on UA 1492…</span></section><section class="confirmed"><div class="check">✓</div><div><strong>Rebooked · UA 1492 via DEN</strong><span>Seat 14A · Gate C18 · Boarding in 25m</span></div></section></div></article></main><script src="app.js?v=gsap1" defer></script></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#ffffff">
+  <title>United Live Activity</title>
+  <link rel="stylesheet" href="styles.css?v=2">
+</head>
+<body>
+  <main class="canvas" aria-label="United flight live activity demo">
+    <article class="card" id="card">
+      <header class="topbar"><span class="airline-mark">✈</span><span class="brand">UNITED</span><span class="separator">·</span><span class="now">now</span></header>
+      <div class="stage">
+        <section class="state flight base"><div class="eyebrow">FLIGHT STATUS</div><h1>UA 837 <span>·</span> SFO → NRT</h1><p>On time <i>·</i> Gate 82</p><div class="route"><b>SFO</b><i></i><b>NRT</b></div><div class="meta"><span>Departure 8:55 PM</span><strong>On schedule</strong></div></section>
+        <section class="state flight delay"><div class="eyebrow amber">TRAVEL ALERT</div><h1>UA 837 <span>·</span> SFO → NRT</h1><p>Delayed 45m <i>·</i> Tight connection in NRT</p><div class="route"><b>SFO</b><i></i><b>NRT</b></div><div class="meta"><span>Gate 82</span><strong class="amber-text">Connection at risk</strong></div></section>
+        <section class="state agent"><div class="agent-box"><div class="agent-badge">✦ POKE AGENT</div><p>Connection in NRT at risk. Found an open seat on UA 1492 via DEN to arrive on time.</p><div class="pills"><button>Rebook via DEN</button><button>Keep Current</button></div></div></section>
+        <section class="state securing"><span class="spinner"></span><span>Securing seat on UA 1492…</span></section>
+        <section class="state confirmed"><span class="check">✓</span><div><strong>Rebooked · UA 1492 via DEN</strong><span>Gate C18 <i>·</i> Seat 14A <i>·</i> Boarding in 25m</span></div></section>
+      </div>
+    </article>
+  </main>
+  <script src="app.js?v=2" defer></script>
+</body>
+</html>
