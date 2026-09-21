@@ -1,0 +1,33 @@
+name: LiveNotifsDemo
+options:
+  bundleIdPrefix: dev.emad.livenotifs
+targets:
+  LiveNotifsDemo:
+    type: application
+    platform: iOS
+    deploymentTarget: "17.2"
+    sources: [LiveNotifsDemo, Shared]
+    info:
+      path: LiveNotifsDemo/Info.plist
+      properties:
+        CFBundleName: LiveNotifsDemo
+        UILaunchScreen_Generation: true
+        UISupportedInterfaceOrientations: [UIInterfaceOrientationPortrait]
+        NSSupportsLiveActivities: true
+    dependencies:
+      - target: FlightWidget
+  FlightWidget:
+    type: app-extension
+    platform: iOS
+    deploymentTarget: "17.2"
+    sources: [FlightWidget, Shared]
+    info:
+      path: FlightWidget/Info.plist
+      properties:
+        CFBundleName: FlightWidget
+        NSExtension:
+          NSExtensionPointIdentifier: com.apple.widgetkit-extension
+          NSExtensionPrincipalClass: $(PRODUCT_MODULE_NAME).FlightWidgetBundle
+    settings:
+      base:
+        PRODUCT_BUNDLE_PACKAGE_TYPE: XPC!
