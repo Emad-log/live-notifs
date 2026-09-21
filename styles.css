@@ -20,7 +20,7 @@ html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#000;font-f
 .date{position:absolute;top:170px;left:0;right:0;text-align:center;font-size:15px;font-weight:500;color:rgba(255,255,255,.92);text-shadow:0 1px 6px rgba(0,0,0,.3);z-index:10}
 
 /* notification canvas sits under the clock */
-.canvas{position:absolute;top:206px;left:0;right:0;display:grid;place-items:start center;padding-top:10px;z-index:20}
+.canvas{position:absolute;top:212px;left:0;right:0;display:grid;place-items:start center;padding-top:8px;z-index:20}
 
 /* fake stacked notification behind the card */
 .stack{position:absolute;top:14px;width:min(392px,calc(100vw - 20px));height:84px;border-radius:24px;background:rgba(50,50,54,.42);backdrop-filter:blur(34px);-webkit-backdrop-filter:blur(34px);border:1px solid rgba(255,255,255,.14);box-shadow:0 12px 28px rgba(0,0,0,.22)}
@@ -42,10 +42,10 @@ html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#000;font-f
 .flight h1{font-size:17px;line-height:21px;letter-spacing:-.02em;margin:7px 0 3px;font-weight:600}
 .flight h1 span,.flight p i,.confirmed i{font-style:normal;opacity:.45}
 .flight p{font-size:13px;line-height:18px;margin:0;color:rgba(255,255,255,.72)}
-.route{display:flex;align-items:center;gap:10px;margin:14px 0 12px}
-.route b{font-size:21px;font-weight:600;letter-spacing:.02em}
-.route i{flex:1;height:1.5px;background:linear-gradient(90deg,rgba(255,255,255,.55),rgba(255,255,255,.14));border-radius:1px;position:relative}
-.route i:after{content:"✈";position:absolute;right:0;top:50%;transform:translate(50%,-50%) rotate(90deg);font-size:10px;opacity:.75}
+.route{display:flex;align-items:center;gap:12px;margin:14px 0 12px}
+.route b{font-size:21px;font-weight:600;letter-spacing:.02em;flex-shrink:0}
+.route i{flex:1;min-width:24px;height:1.5px;background:linear-gradient(90deg,rgba(255,255,255,.55),rgba(255,255,255,.14));border-radius:1px;position:relative;overflow:visible}
+.route i:after{content:"";position:absolute;right:-2px;top:50%;width:7px;height:7px;margin-top:-3.5px;transform:rotate(45deg);border-top:1.5px solid rgba(255,255,255,.75);border-right:1.5px solid rgba(255,255,255,.75)}
 .meta{display:flex;justify-content:space-between;font-size:12.5px;padding-top:10px;border-top:.5px solid rgba(255,255,255,.12)}
 .meta span{color:rgba(255,255,255,.55)}
 .meta strong{font-weight:600}
@@ -76,8 +76,8 @@ html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#000;font-f
 
 /* bottom chrome: quick actions + home indicator */
 .quick{position:absolute;bottom:44px;left:0;right:0;display:flex;justify-content:center;gap:58px;z-index:10}
-.qbtn{width:46px;height:46px;border-radius:50%;border:.5px solid rgba(255,255,255,.2);background:rgba(50,50,54,.45);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);display:grid;place-items:center;cursor:pointer}
-.qbtn svg{width:20px;height:20px}
+.qbtn{width:47px;height:47px;border-radius:50%;border:.5px solid rgba(255,255,255,.22);background:rgba(120,120,128,.32);backdrop-filter:blur(24px) saturate(150%);-webkit-backdrop-filter:blur(24px) saturate(150%);display:grid;place-items:center;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,.18)}
+.qbtn svg{width:21px;height:21px}
 .home-indicator{position:absolute;bottom:9px;left:50%;transform:translateX(-50%);width:134px;height:5px;border-radius:3px;background:rgba(255,255,255,.85)}
 
 @media (max-width:400px),(max-height:740px){
