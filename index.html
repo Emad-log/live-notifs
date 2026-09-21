@@ -4,33 +4,19 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#050505">
-  <title>Live Activity Demo</title>
-  <link rel="stylesheet" href="styles.css?v=88ad9dec">
+  <title>Live Activity</title>
+  <link rel="stylesheet" href="styles.css?v=minimal1">
 </head>
 <body>
-  <main class="stage">
-    <section class="phone" aria-label="iPhone live activity presentation">
-      <div class="statusbar"><span id="phoneTime">9:41</span><span class="status-icons">● ◒ ▰</span></div>
-      <div class="island" id="island"><span class="island-mark">✈</span><span id="islandText">UA 837 · On time</span></div>
-      <div class="lockscreen">
-        <div class="lock-icon">⌁</div>
-        <div class="date">SATURDAY, SEPTEMBER 19</div>
-        <div class="clock">9:41</div>
-        <div class="notification" id="notification">
-          <div class="notification-head"><div class="app-icon">✦</div><div><strong>Live Activity</strong><span id="timeLabel">Now</span></div><span class="more">•••</span></div>
-          <div class="notification-body"><div class="kicker" id="kicker">FLIGHT STATUS</div><h1 id="title">UA 837 is on time</h1><p id="copy">Boarding begins at 8:55 PM at gate B12.</p><div class="flight-row"><span>JFK</span><span class="flight-line"></span><span>YYZ</span></div><div class="meta"><span id="metaLabel">Gate B12</span><strong id="metaValue">On schedule</strong></div></div>
-          <div class="actions" id="actions"></div>
-        </div>
-      </div>
-      <div class="lock-actions"><span>▣</span><span>◉</span></div>
-      <div class="home-indicator"></div>
-    </section>
-    <section class="controls">
-      <p class="eyebrow">LIVE ACTIVITY PROTOTYPE</p><h2>Context that keeps moving.</h2><p class="subhead">A notification that reacts, reasons, and resolves without losing the thread.</p>
-      <button class="autoplay" id="autoplay">▶ Auto-play for screen record</button>
-      <div class="timeline" id="timeline"></div><p class="hint" id="hint">Press auto-play to watch the full 20-second journey.</p>
-    </section>
+  <main class="canvas" aria-label="Animated Apple-style live activity">
+    <div class="dynamic-island"><span class="island-dot"></span><span id="islandText">UA 837</span></div>
+    <article class="activity" id="activity">
+      <div class="activity-head"><div class="app-icon">✦</div><div class="app-name">Live Activity</div><div class="updated" id="updated">now</div></div>
+      <div class="content"><div class="eyebrow" id="eyebrow">FLIGHT STATUS</div><h1 id="title">UA 837 is on time</h1><p id="copy">Boarding begins at 8:55 PM · Gate B12</p><div class="route"><span>JFK</span><span class="route-line"></span><span>YYZ</span></div><div class="details"><span id="detailLabel">Gate B12</span><strong id="detailValue">On schedule</strong></div></div>
+      <div class="actions" id="actions"></div>
+    </article>
+    <div class="tap" id="tap"><span></span></div>
   </main>
-  <script src="app.js?v=f0680400"></script>
+  <script src="app.js?v=minimal1"></script>
 </body>
 </html>
