@@ -5,7 +5,7 @@ struct ActivityPushHandler {
         let attributes = FlightActivityAttributes(flightNumber: flightNumber, origin: origin, destination: destination)
         let state = FlightActivityAttributes.ContentState(
             phase: .scheduled,
-            title: "Flight 482 is on time",
+            title: "Flight \(flightNumber) is on time",
             detail: "Boarding begins at 9:55 at gate B12.",
             gate: "B12",
             departure: "10:00"
